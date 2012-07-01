@@ -16,6 +16,9 @@ class Api extends Oauth_Controller
 
 		// Settings & Create Folders
 		$settings = $this->installer->install_settings('fitbit', config_item('fitbit_settings'));
+
+		// Site
+		$site = $this->installer->install_sites(config_item('fitbit_sites'));
 	
 		if ($settings == TRUE)
 		{

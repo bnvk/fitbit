@@ -13,10 +13,10 @@
 */
 
 /* Settings */
+$config['fitbit_settings']['widgets'] 				= 'TRUE';
 $config['fitbit_settings']['enabled']				= 'TRUE';
-$config['fitbit_settings']['create_permission'] 	= '3';
-$config['fitbit_settings']['publish_permission']	= '2';
-$config['fitbit_settings']['manage_permission']		= '2';
+$config['fitbit_settings']['consumer_key'] 			= '';
+$config['fitbit_settings']['consumer_secret'] 		= '';
 $config['fitbit_settings']['social_connection'] 	= 'TRUE';
 $config['fitbit_settings']['connections_redirect']	= '';
 $config['fitbit_settings']['archive']				= '';

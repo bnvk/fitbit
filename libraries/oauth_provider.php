@@ -1,33 +1,31 @@
 <?php
 
-class OAuth_Provider_Fitibt extends OAuth_Provider {
+class OAuth_Provider_Fitbit extends OAuth_Provider {
 
 	public $name = 'fitbit';
-	
 	public $uid_key = 'user_id';
 
 	public function url_request_token()
 	{
-		return 'http://api.fitbit.com/oauth/request_token'; //'https://api.twitter.com/oauth/request_token';
+		return 'https://api.fitbit.com/oauth/request_token';
 	}
 
 	public function url_authorize()
 	{
-		return 'http://www.fitbit.com/oauth/authorize';//'https://api.twitter.com/oauth/authenticate';
+		return 'https://www.fitbit.com/oauth/authorize';
 	}
 
 	public function url_access_token()
 	{
-		return 'http://api.fitbit.com/oauth/access_token'; //'https://api.twitter.com/oauth/access_token';
+		return 'https://api.fitbit.com/oauth/access_token';
 	}
 	
 	public function get_user_info(OAuth_Consumer $consumer, OAuth_Token $token)
 	{		
 		// Create a new GET request with the required parameters
-		$request = OAuth_Request::forge('resource', 'GET', 'http://api.twitter.com/1/users/lookup.json', array(
-			'oauth_consumer_key' => $consumer->key,
-			'oauth_token' => $token->access_token,
-			'user_id' => $token->uid,
+		$request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/-/profile.json', array(
+			'oauth_consumer_key' 	=> $consumer->key,
+			'oauth_token' 			=> $token->access_token
 		));
 
 		// Sign the request using the consumer and token
@@ -36,18 +34,45 @@ class OAuth_Provider_Fitibt extends OAuth_Provider {
 		$user = current(json_decode($request->execute()));
 		
 		// Create a response from the request
-		return array(
-			'uid' => $token->uid,
-			'nickname' => $user->screen_name,
-			'name' => $user->name ?: $user->screen_name,
-			'location' => $user->location,
-			'image' => $user->profile_image_url,
-			'description' => $user->description,
-			'urls' => array(
-			  'Website' => $user->url,
-			  'Twitter' => 'http://twitter.com/'.$user->screen_name,
-			),
-		);
+		return $user;
 	}
 
-} // End Provider_Twitter
+	public function get_user_activity(OAuth_Consumer $consumer, OAuth_Token $token)
+	{		
+		// Create a new GET request with the required parameters
+		// $request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/'.date('Y-m-d').'.json', array(
+		$request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities.json', array(
+			'oauth_consumer_key' 	=> $consumer->key,
+			'oauth_token' 			=> $token->access_token
+		));
+
+		// Sign the request using the consumer and token
+		$request->sign($this->signature, $consumer, $token);
+
+		$activities = json_decode($request->execute());
+		
+		// Create a response from the request
+		return $activities;
+	}
+
+	public function get_user_activity_daily(OAuth_Consumer $consumer, OAuth_Token $token)
+	{		
+		// Create a new GET request with the required parameters
+		// $request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/'.date('Y-m-d').'.json', array(
+		$request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/2012-06-30.json', array(
+			'oauth_consumer_key' 	=> $consumer->key,
+			'oauth_token' 			=> $token->access_token
+		));
+
+		// Sign the request using the consumer and token
+		$request->sign($this->signature, $consumer, $token);
+
+		$activities = json_decode($request->execute());
+		
+		// Create a response from the request
+		return $activities;
+	}
+	
+	
+
+} // End Provider_Fitbit

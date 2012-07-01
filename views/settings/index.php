@@ -7,20 +7,17 @@
 		<p><a href="<?= base_url() ?>api/<?= $this_module ?>/uninstall" id="app_uninstall" class="button_delete">Uninstall</a></p>
 	</div>
 	
-	<h3>Permissions</h3>
+	<h3>Application Keys</h3>
 
-	<p>Create
-	<?= form_dropdown('create_permission', config_item('users_levels'), $settings['fitbit']['create_permission']) ?>
-	</p>
+	<p>Fitbit requires <a href="https://dev.fitbit.com/apps/new" target="_blank">registering your application</a></p>
+				
+	<p><input type="text" name="consumer_key" value="<?= $settings['fitbit']['consumer_key'] ?>"> Consumer Key </p> 
+	<p><input type="text" name="consumer_secret" value="<?= $settings['fitbit']['consumer_secret'] ?>"> Consumer Secret</p>
 
-	<p>Publish
-	<?= form_dropdown('publish_permission', config_item('users_levels'), $settings['fitbit']['publish_permission']) ?>	
-	</p>
+</div>
 
-	<p>Manage All
-	<?= form_dropdown('manage_permission', config_item('users_levels'), $settings['fitbit']['manage_permission']) ?>	
-	</p>
-		
+<span class="item_separator"></span>
+
 <div class="content_wrap_inner">
 
 	<h3>Social</h3>

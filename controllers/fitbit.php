@@ -1,9 +1,15 @@
 <?php
-class App_template extends Site_Controller
+class Fitbit extends Site_Controller
 {
     function __construct()
     {
-        parent::__construct();       
+        parent::__construct();   
+
+        if (config_item('fitbit_enabled') != 'TRUE') redirect(base_url());        
+
+		$this->data['page_title'] 	= 'Fitibt';
+
+		$this->check_connection = $this->social_auth->check_connection_user($this->session->userdata('user_id'), 'fitbit', 'primary');            
 	}
 	
 	function index()
@@ -12,10 +18,5 @@ class App_template extends Site_Controller
 		$this->render();	
 	}
 
-	function view() 
-	{		
-		// Basic Content Redirect	
-		$this->render();
-	}
 	
 }

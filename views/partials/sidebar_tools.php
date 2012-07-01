@@ -1,1 +1,1 @@
-<li><a class="sidebar_icon" href="<?= base_url() ?>home/fitbit"><img src="<?= $this_module_assets ?>fitbit_24.png"><span>Fitbit</span></a></li>
+<li><a class="sidebar_icon" href="<?= base_url() ?>home/fitbit/overview"><img src="<?= $this_module_assets ?>fitbit_24.png"><span>Fitbit</span></a></li>
