@@ -30,6 +30,33 @@ class Api extends Oauth_Controller
         }		
 		
 		$this->response($message, 200);
-	} 
+	}
+	
+	function recent_activities_get()
+	{
+		
+		// Basic Content Redirect
+        $this->load->library('oauth');
+        
+        // Create Consumer
+        $consumer = $this->oauth->consumer(array(
+            'key' 	 	=> config_item('fitbit_consumer_key'),
+            'secret' 	=> config_item('fitbit_consumer_secret')
+        ));
+
+        // Load Provider
+        $fitbit = $this->oauth->provider('fitbit');
+
+        // Create Tokens
+		$tokens = OAuth_Token::forge('request', array(
+			'access_token' 	=> '9a218d70d45fe5c32020201164e63aab',
+			'secret' 		=> '7435482cd44ab295c9ed42cfa806297e'
+		));
+
+		$activities = $fitbit->get_user_activity_daily($consumer, $tokens);			
+		
+		$this->response($activities, 200);
+	}
+	
 
 }
