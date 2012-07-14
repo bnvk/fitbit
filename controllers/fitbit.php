@@ -40,7 +40,7 @@ class Fitbit extends Site_Controller
 				'secret' 		=> $connection->auth_two
 			));
 	
-			$widget_data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens);	
+			$widget_data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens, $connection->connection_user_id, date('Y-m-d'));	
 		}
 		else
 		{

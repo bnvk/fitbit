@@ -35,8 +35,8 @@ class Home extends Dashboard_Controller
 				'secret' 		=> $connection->auth_two
 			));
 	
-			$this->data['activities'] = $fitbit->get_user_activity($consumer, $tokens);
-			$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens);		
+			$this->data['activities'] = $fitbit->get_user_activity($consumer, $tokens, $connection->connection_user_id);
+			$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens, $connection->connection_user_id, date('Y-m-d'));
 		}
 		else
 		{
