@@ -30,10 +30,6 @@
 	<?= base_url() ?> <input type="text" size="30" name="connections_redirect" value="<?= $settings['fitbit']['connections_redirect'] ?>" />
 	</p>
 
-	<p>Archive Data
-	<?= form_dropdown('archive', config_item('yes_or_no'), $settings['fitbit']['archive']) ?>
-	</p>
-
 	<input type="hidden" name="module" value="<?= $this_module ?>">
 
 	<p><input type="submit" name="save" value="Save" /></p>

@@ -25,15 +25,23 @@ class Home extends Dashboard_Controller
 
         // Load Provider
         $fitbit = $this->oauth->provider('fitbit');
-
-        // Create Tokens
-		$tokens = OAuth_Token::forge('request', array(
-			'access_token' 	=> '9a218d70d45fe5c32020201164e63aab',
-			'secret' 		=> '7435482cd44ab295c9ed42cfa806297e'
-		));
-
-		$this->data['activities'] = $fitbit->get_user_activity($consumer, $tokens);
-		$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens);		
+        
+        // Get Connection
+   		if ($connection = $this->social_auth->check_connection_user($this->session->userdata('user_id'), 'fitbit', 'primary'))
+   		{
+	        // Create Tokens
+			$tokens = OAuth_Token::forge('request', array(
+				'access_token' 	=> $connection->auth_one,
+				'secret' 		=> $connection->auth_two
+			));
+	
+			$this->data['activities'] = $fitbit->get_user_activity($consumer, $tokens);
+			$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens);		
+		}
+		else
+		{
+			
+		}
 
 		$this->render();
 	}
