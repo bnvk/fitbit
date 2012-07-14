@@ -55,11 +55,11 @@ class OAuth_Provider_Fitbit extends OAuth_Provider {
 		return $activities;
 	}
 
-	public function get_user_activity_daily(OAuth_Consumer $consumer, OAuth_Token $token)
+	public function get_user_activity_daily(OAuth_Consumer $consumer, OAuth_Token $token, $date)
 	{		
 		// Create a new GET request with the required parameters
-		// $request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/'.date('Y-m-d').'.json', array(
-		$request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/2012-06-30.json', array(
+		$request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/'.$date.'.json', array(
+		// $request = OAuth_Request::forge('resource', 'GET', 'https://api.fitbit.com/1/user/222F5Z/activities/date/2012-06-30.json', array(
 			'oauth_consumer_key' 	=> $consumer->key,
 			'oauth_token' 			=> $token->access_token
 		));

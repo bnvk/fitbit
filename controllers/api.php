@@ -54,8 +54,10 @@ class Api extends Oauth_Controller
 		));
 
 		$activities = $fitbit->get_user_activity_daily($consumer, $tokens);			
+
+        $message = array('status' => 'error', 'message' => 'Dang Fitbit could not be uninstalled');
 		
-		$this->response($activities, 200);
+		$this->response($message, 200);
 	}
 	
 

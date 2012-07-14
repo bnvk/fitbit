@@ -33,7 +33,7 @@ class Home extends Dashboard_Controller
 		));
 
 		$this->data['activities'] = $fitbit->get_user_activity($consumer, $tokens);
-		$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens);		
+		$this->data['activities_daily'] = $fitbit->get_user_activity_daily($consumer, $tokens, date('Y-m-d'));		
 
 		$this->render();
 	}
