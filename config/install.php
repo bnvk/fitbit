@@ -18,8 +18,8 @@ $config['fitbit_settings']['enabled']				= 'TRUE';
 $config['fitbit_settings']['consumer_key'] 			= '';
 $config['fitbit_settings']['consumer_secret'] 		= '';
 $config['fitbit_settings']['social_connection'] 	= 'TRUE';
-$config['fitbit_settings']['connections_redirect']	= '';
-$config['fitbit_settings']['archive']				= '';
+$config['fitbit_settings']['connections_redirect']	= 'settings/connections/';
+$config['fitbit_settings']['widgets_daily_activity']	= '';
 
 /* Sites */
 $config['fitbit_sites'][] = array(

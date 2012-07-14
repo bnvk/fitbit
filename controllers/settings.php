@@ -27,7 +27,9 @@ class Settings extends Dashboard_Controller
 	
 	function widgets()
 	{
-		$this->data['sub_title'] = 'Widgets';		
+		$this->data['sub_title']	= 'Widgets';
+		$this->data['users']		= $this->social_auth->get_users('user_level_id', 1);
+		
 		$this->render('dashboard_wide');
 	}		
 

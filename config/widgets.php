@@ -1,14 +1,26 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /**
-* Name:			Social Igniter : App Template : Widgets
+* Name:			Social Igniter : Fitbit : Widgets
 * Author: 		Brennan Novak
 * 		  		contact@social-igniter.com
 *         		@brennannovak
 *          
 * Project:		http://social-igniter.com/
-* Source: 		http://github.com/socialigniter/module-template
+* Source: 		http://github.com/brennannovak/fitibt
 *
-* Description: 	Widgets in core install of Social Igniter
+* Description: 	Widgets for Fitbit App for Social-Igniter
 */
 
-$config['app-template_widgets'] = FALSE;
+$config['fitbit_widgets'][] = array(
+	'regions'	=> array('sidebar','content','wide'),
+	'widget'	=> array(
+		'module'	=> 'fitbit',
+		'name'		=> 'Daily Activity',
+		'method'	=> 'run',
+		'path'		=> 'widgets_daily_activity',
+		'multiple'	=> 'FALSE',
+		'order'		=> '1',
+		'title'		=> 'Daily Activity',
+		'content'	=> ''
+	)
+);
