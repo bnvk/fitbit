@@ -1,0 +1,12 @@
+{
+	"app":"fitbit",
+	"name":"Fitbit",
+	"created":"2012-12-15",
+	"updated":"2012-12-15",
+	"creator":"Brennan Novak",
+	"category":"tools",	
+	"links":{
+		"default":"home/fitbit/overview"
+	},
+	"launcher":"yes"
+}
